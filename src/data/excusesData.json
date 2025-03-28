@@ -1,0 +1,127 @@
+{
+    "Ami": {
+        "Retard": {
+            "Simple": [
+                "Je suis en retard, désolé !",
+                "Pardon, j'ai pris trop de temps à me préparer."
+            ],
+            "Drôle": [
+                "Mon chat a kidnappé mes clés...",
+                "J'étais coincé dans une discussion philosophique avec mon miroir."
+            ],
+            "Hardcore": [
+                "J'ai dû intervenir dans une course poursuite pour sauver un chien."
+            ]
+        },
+        "Sortie": {
+            "Simple": [
+                "Je suis crevé, je passe mon tour ce soir.",
+                "Pas dispo ce soir, désolé."
+            ],
+            "Drôle": [
+                "Je dois rester chez moi, mon canapé m’a supplié.",
+                "J'ai promis à mon chat une soirée cinéma à deux."
+            ],
+            "Hardcore": [
+                "Je suis assigné à résidence par mon robot aspirateur."  
+            ]
+        },
+        "Anniversaire oublié": {
+            "Simple": [
+                "Je suis désolé, j'ai complètement oublié...",
+                "Je ne savais pas que c'était aujourd'hui !"
+            ],
+            "Drôle": [
+                "J'ai laissé mon cerveau en mode avion...",
+                "J'étais en pleine hibernation mentale."
+            ],
+            "Hardcore": [
+                "Je me suis perdu dans une faille temporelle, désolé."  
+            ]
+        }
+    },
+    "Boss": {
+        "Retard": {
+            "Simple": [
+                "Je suis coincé dans les bouchons, désolé.",
+                "J'ai eu un petit souci avec mon réveil."
+            ],
+            "Drôle": [
+                "Un pigeon m'a volé mes chaussures...",
+                "J'ai dû débattre avec mon GPS qui voulait que je parte en randonnée."
+            ],
+            "Hardcore": [
+                "Je suis coincé dans une opération d’infiltration chez mes voisins..."
+            ]
+        },
+        "Travail / Deadline": {
+            "Simple": [
+                "Je vais devoir finir ça demain, je suis à bout.",
+                "Je suis en plein rush, je vous tiens au courant." 
+            ],
+            "Drôle": [
+                "Je travaille sur le projet... dans mes rêves, mais je progresse !",
+                "Je suis en pleine réunion avec mon moi intérieur."
+            ],
+            "Hardcore": [
+                "Je suis en train de recréer l'univers en PowerPoint... c'est long."
+            ]
+        }
+    },
+    "Famille": {
+        "Repas de famille": {
+            "Simple": [
+                "Je suis malade, je préfère éviter de vous contaminer.",
+                "Je ne me sens pas bien aujourd'hui."
+            ],
+            "Drôle": [
+                "Je suis en pleine cure détox des repas familiaux.",
+                "J'ai promis de ne pas sortir avant d'avoir fini toutes mes séries Netflix."
+            ],
+            "Hardcore": [
+                "Je suis coincé dans un débat sans fin avec mon frigo."
+            ]
+        },
+        "Visite impromptue": {
+            "Simple": [
+                "Je suis pris aujourd'hui, désolé.",
+                "Je dois vraiment bosser, une autre fois ?"
+            ],
+            "Drôle": [
+                "Je suis coincé sous mon plaid, c'est grave.",
+                "Mon chat a barricadé la porte, je ne peux pas sortir."
+            ],
+            "Hardcore": [
+                "Je suis en mission secrète pour le gouvernement... chuuut."  
+            ]
+        }
+    },
+    "Professeur": {
+        "Devoir en retard": {
+            "Simple": [
+                "J'ai pris un peu de retard mais je rends ça rapidement.",
+                "Je suis désolé, je vais vous envoyer ça aujourd'hui."
+            ],
+            "Drôle": [
+                "Mon chien a mangé mon ordinateur.",
+                "J'ai passé 3h à retrouver mon stylo préféré."
+            ],
+            "Hardcore": [
+                "Je me suis retrouvé pris en otage par mon classeur."
+            ]
+        },
+        "Absence en cours": {
+            "Simple": [
+                "Je ne me sentais pas bien ce matin.",
+                "J'avais un rendez-vous médical."
+            ],
+            "Drôle": [
+                "Je me suis perdu dans le couloir, c'était épique.",
+                "J'étais en pleine méditation... involontairement."
+            ],
+            "Hardcore": [
+                "Je suis parti à la recherche de la vérité absolue dans la bibliothèque."
+            ]
+        }
+    }
+}
