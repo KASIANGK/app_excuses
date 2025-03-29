@@ -1,0 +1,201 @@
+.part-one {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.video-section {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.content-wrapper {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+    width: 70%;
+    height: 100%;
+    z-index: 10;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    gap: 20px;
+}
+
+.exit-text {
+    font-size: 7rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+    margin: 0;
+}
+
+.scroll-arrow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -30px;
+}
+
+/* 🔽 Media query pour les écrans de 1016px ou moins */
+@media (max-width: 989px) {
+    .content-wrapper {
+        align-items: center;  /* Centrer le contenu sur les petits écrans */
+        width: 90%;  /* Réduire la largeur pour mieux s’adapter */
+        margin-top: 0%;
+        margin-left: 15%;
+    }
+
+    .exit-text {
+        font-size: 4.8rem;  /* Réduction de la taille du texte */
+        margin-top: 0px; /* Décaler le texte vers le haut */
+        margin-left: 5%;
+    }
+
+    .scroll-arrow {
+        margin-top: -30px;  /* Ajuster la flèche pour qu'elle reste bien positionnée */
+        margin-left: 10%;
+    }
+}
+
+/* 🔽 Media query pour les écrans de 1016px ou moins */
+@media (max-width: 813px) {
+    .content-wrapper {
+        align-items: center;  /* Centrer le contenu sur les petits écrans */
+        width: 90%;  /* Réduire la largeur pour mieux s’adapter */
+        margin-top: 5%;
+        margin-left: 0%;
+
+    }
+
+    .exit-text {
+        font-size: 5rem;  /* Réduction de la taille du texte */
+        margin-top: 440px; /* Décaler le texte vers le haut */
+        margin-left: 0%;
+    }
+
+    .scroll-arrow {
+        margin-top: -30px;  /* Ajuster la flèche pour qu'elle reste bien positionnée */
+        margin-left: 10%;
+    }
+}
+
+/* 🔽 Media query pour les écrans de 1016px ou moins */
+@media (max-width: 789px) {
+    .content-wrapper {
+        align-items: center;  /* Centrer le contenu sur les petits écrans */
+        width: 90%;  /* Réduire la largeur pour mieux s’adapter */
+        margin-top: 10%;
+        margin-left: 0%;
+
+    }
+
+    .exit-text {
+        font-size: 5rem;  /* Réduction de la taille du texte */
+        margin-top: 415px; /* Décaler le texte vers le haut */
+        margin-left: 0%;
+    }
+
+    .scroll-arrow {
+        margin-top: -25px;  /* Ajuster la flèche pour qu'elle reste bien positionnée */
+        margin-left: 12%;
+    }
+}
+
+/* 🔽 Media query pour les écrans de 1016px ou moins */
+@media (max-width: 650px) {
+    .content-wrapper {
+        align-items: center;  /* Centrer le contenu sur les petits écrans */
+        width: 90%;  /* Réduire la largeur pour mieux s’adapter */
+        margin-top: 5%;
+        margin-left: 0%;
+
+    }
+
+    .exit-text {
+        font-size: 5rem;  /* Réduction de la taille du texte */
+        margin-top: 380px; /* Décaler le texte vers le haut */
+        margin-left: 0%;
+    }
+
+    .scroll-arrow {
+        margin-top: -30px;  /* Ajuster la flèche pour qu'elle reste bien positionnée */
+        margin-left: 10%;
+    }
+}
+
+
+/* 🔽 Media query pour les écrans de 1016px ou moins */
+@media (max-width: 629px) {
+    .content-wrapper {
+        align-items: center;  /* Centrer le contenu sur les petits écrans */
+        width: 90%;  /* Réduire la largeur pour mieux s’adapter */
+        margin-top: 5%;
+        margin-left: 0%;
+
+    }
+
+    .exit-text {
+        font-size: 5rem;  /* Réduction de la taille du texte */
+        margin-top: 370px; /* Décaler le texte vers le haut */
+        margin-left: 0%;
+    }
+
+    .scroll-arrow {
+        margin-top: -30px;  /* Ajuster la flèche pour qu'elle reste bien positionnée */
+        margin-left: 10%;
+    }
+}
+
+/* 🔽 Media query pour les écrans de 1016px ou moins */
+@media (max-width: 507px) {
+    .content-wrapper {
+        align-items: center;  /* Centrer le contenu sur les petits écrans */
+        width: 90%;  /* Réduire la largeur pour mieux s’adapter */
+        margin-top: 5%;
+        margin-left: 0%;
+
+    }
+
+    .exit-text {
+        font-size: 5rem;  /* Réduction de la taille du texte */
+        margin-top: 350px; /* Décaler le texte vers le haut */
+        margin-left: 0%;
+    }
+
+    .scroll-arrow {
+        margin-top: -30px;  /* Ajuster la flèche pour qu'elle reste bien positionnée */
+        margin-left: 10%;
+    }
+}
+
+
+/* 🔽 Media query pour les écrans de 1016px ou moins */
+@media (max-width: 425px) {
+    .content-wrapper {
+        align-items: center;  /* Centrer le contenu sur les petits écrans */
+        width: 90%;  /* Réduire la largeur pour mieux s’adapter */
+        margin-top: 5%;
+        margin-left: 0%;
+
+    }
+
+    .exit-text {
+        font-size: 5rem;  /* Réduction de la taille du texte */
+        margin-top: 330px; /* Décaler le texte vers le haut */
+        margin-left: 0;
+    }
+
+    .scroll-arrow {
+        margin-top: 250px;  /* Ajuster la flèche pour qu'elle reste bien positionnée */
+        margin-top: -30px;  /* Ajuster la flèche pour qu'elle reste bien positionnée */
+
+    }
+}

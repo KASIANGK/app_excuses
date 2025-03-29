@@ -4,32 +4,30 @@ html, body {
   /* max-width: 809px; */
   width: 100vw;
   height: fit-content;
-  
-  /* max-width: 806px;
-  min-height: 809px; */
-  box-sizing: border-box; /* Évite les dépassements inattendus */
-  overflow-x: hidden;       /* Empêche tout débordement involontaire */
+  box-sizing: border-box; 
+  overflow-x: hidden;     
   overflow-y: auto;  
-}
-
-#root {
   height: fit-content;
+  background-color: #02B160;
 }
 
 
 .app {
-  position: relative;
   /* max-width: 809px; */
   width: 100%;
-  /* height: 100vh; */
+  height: 100%;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   height: fit-content;
   background-color: #02B160;
+  padding: 15px;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial, sans-serif;
+  margin: 0%;
 }
 
-/* Effet flou et sombre lors du hover */
 .blur-effect::before {
   content: "";
   position: absolute;
@@ -37,17 +35,9 @@ html, body {
   left: 0;
   width: 100%; 
   height: 100vh;
-  background: rgba(0, 0, 0, 0.7); /* Assombrissement */
-  backdrop-filter: blur(10px);      /* Effet de flou */
-  z-index: 5;                      /* Assure que l'effet est en arrière-plan */
-}
-
-.app {
-  font-family: Arial, sans-serif;
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  margin: 0%;
+  background: #02B160; 
+  backdrop-filter: blur(10px);     
+  z-index: 5;                     
 }
 
 .video-section {
@@ -60,22 +50,8 @@ html, body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: black;
+  background-color: #02B160;
 }
-
-.navbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 10%;
-  background-color: #333;
-  color: white;
-  padding: 10px;
-  z-index: 10; /* Ensure it's above the video */
-}
-
-
-
 
 .category-section,
 .reason-section,
@@ -84,19 +60,38 @@ html, body {
   margin-top: 100px;
   margin-bottom: 100px;
   display: block;
-  height: 100vh;  /* Ensures each section takes full height */
+  height: 100vh; 
 }
-
-
-
 
 button.visible {
   opacity: 1;
 }
-/* 
-button:hover {
-  background-color: #0056b3;
-} */
+
+
+#next-section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Centre verticalement */
+  align-items: center; /* Centre horizontalement */
+  height: 100vh; /* Assure que #next-section prend toute la hauteur de la fenêtre */
+  color: white;
+  opacity: 1;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+#next-section.hidden {
+  opacity: 0;
+  z-index: 0;
+}
+
+#next-section.visible {
+  opacity: 1;
+  z-index: 1000;
+  pointer-events: auto;
+  width: 100%;
+}
+
 
 #next-section.hidden button {
   opacity: 0; 
@@ -104,32 +99,11 @@ button:hover {
   z-index: 1 !important;
 }
 
-#next-section.visible {
-  opacity: 1; 
-  z-index: 1000;
-  pointer-events: auto
+.main-section h1 {
+  margin-bottom: 20px;
 }
 
-#next-section.hidden {
-  opacity: 0;
-}
-
-
-#next-section {
-  width: 100%;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column; 
-  justify-content: center;
-  align-items: center;
-  color: white;
-  /* background-color: #000000;  */
-  position: relative;
-  opacity: 1; 
-  transition: opacity 0.5s ease, transform 0.5s ease;
-  /* margin-top: -15%; */
-}
-.next-section {
+.second-video-section {
   position: fixed;
   top: 0;
   left: 0;
@@ -139,62 +113,49 @@ button:hover {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #02B160;
+  /* background-color: black; */
+  z-index: 400;
 }
-
-
-#next-section.visible {
-  opacity: 1;
-  z-index: 1000;
-  pointer-events: auto;
-}
-
-#next-section.hidden {
-  opacity: 0;
-  z-index: 0;
-}
-
-.main-section h1 {
-  margin-bottom: 20px;
-}
-.second-video-section {
-  display: flex;
+.second-video-section video {
   width: 100%;
-  justify-content: center;
-  align-items: center;
-}
-/* 
-button {
-  padding: 10px 20px;
-  margin: 10px;
-  background-color: #007BFF;
-  color: white;
-  border: none;
-  cursor: pointer;
-  border-radius: 5px;
+  /* height: 100%; */
+  object-fit: cover;
 }
 
-button:hover {
-  background-color: #0056b3;
-} */
+/* Media query pour écrans plus larges que 814px */
+@media (min-width: 814px) {
+  .video-section,
+  .second-video-section {
+    width: 50%; /* Si la largeur de l'écran est > 814px, on définit la largeur des vidéos à 50% */
+    height: 100vh; /* La hauteur reste à 100vh */
+  }
 
+  .video-section video,
+  .second-video-section video {
+    width: 100%; /* Les vidéos occupent 100% de la largeur de leur conteneur parent */
+    height: 100%; /* Les vidéos occupent 100% de la hauteur de leur conteneur parent */
+    object-fit: cover; /* Remplir l'espace sans déformation */
+  }
+}
 
+/* Effets sur le bouton */
 .kave-btn {
   position: relative;
-  border: solid 1px rgba(0, 214, 252, 0.3); 
+  z-index: 10;
+  border: solid 1px rgba(0, 252, 113, 0.3);
   background: none;
+  text-transform: uppercase;
+  transition: all 0.25s ease, transform 0.3s ease;
+  box-shadow: 0 0 20px rgba(0, 252, 59, 0.9);
   color: rgba(0, 214, 252, 0.7);
   font-family: "Roboto", sans-serif;
-  text-transform: uppercase;
   font-weight: normal;
   letter-spacing: 1.8px;
   width: 200px;
   height: 70px;
   padding: 0;
-  transition: all 0.25s ease;
   outline: none;
   cursor: pointer;
-  box-shadow: 0 0 8px rgba(0, 214, 252, 0.4); 
 }
 
 .kave-btn:before, .kave-btn:after {
@@ -236,15 +197,14 @@ button:hover {
   left: 0;
 }
 
-/* Effets au survol */
 .kave-btn:hover {
-  transform: scale(1.08); /* Effet rebond plus subtil */
-  box-shadow: 0 0 20px rgba(0, 214, 252, 0.9); /* Glow plus intense */
+  transform: scale(1.08); 
+  box-shadow: 0 0 20px rgba(0, 214, 252, 0.9); 
 }
 
 .kave-btn:hover:before {
   left: 0;
-  width: 20px; /* Bordure rétractée */
+  width: 20px; 
 }
 
 .kave-btn:hover:after {
@@ -262,67 +222,38 @@ button:hover {
   top: 0;
 }
 
-/* Image flèche */
 .arrow-image {
   width: 35px;
   height: auto;
-  filter: drop-shadow(0 0 8px rgba(0, 252, 126, 0.8)); /* Glow sur la flèche */
+  filter: drop-shadow(0 0 8px rgba(0, 252, 126, 0.8)); 
 }
-
-/* Effets sur le bouton */
-.kave-btn {
-  position: relative;
-  z-index: 10; /* Au-dessus de l'effet flou */
-  border: solid 1px rgba(0, 252, 113, 0.3);
-  background: none;
-  color: rgba(0, 252, 55, 0.7);
-  text-transform: uppercase;
-  width: 100px;
-  height: 70px;
-  transition: all 0.25s ease, transform 0.3s ease;
-  box-shadow: 0 0 20px rgba(0, 252, 59, 0.9);
-}
-
-.kave-btn:hover {
-  transform: scale(1.08);   /* Effet rebond */
-  box-shadow: 0 0 30px rgba(0, 214, 252, 1); /* Glow intense */
-}
-
-.arrow-image {
-  filter: drop-shadow(0 0 8px rgba(0, 214, 252, 0.8)); 
-}
-
 
 .scroll-arrow {
-  /* position: fixed;
-  bottom: 200px;
-  right: 50px; */
   font-size: 2rem;
   color: white;
-  /* background-color: #02B160; */
   border: none;
   padding: 10px;
   cursor: pointer;
   z-index: 10;
 }
+.steps {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
 
 .step1 {
-  z-index: 100;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  justify-content: center;
+  text-align: center;
+  padding: 50px 20px;
+  /* max-width: 750px; */
 }
 .space {
   min-height: 200px;
-}
-
-.step1 {
-  text-align: center;
-  padding: 50px 20px;
-  display: flex;
-  flex-wrap: wrap;
-  max-width: 750px;
-  flex-direction: row;
 }
 
 .step1 h1 {
@@ -337,21 +268,21 @@ button:hover {
 
 .relation-title {
   display: flex;
-  justify-content: flex-end; /* Aligner le contenu à droite */
+  justify-content: center;
   padding-right: 35px; 
   width: 90%;
 }
 
 .title {
-  font-family: 'Roboto', sans-serif; /* Utiliser la police Roboto */
-  font-size: 2.2rem; /* Taille du texte */
-  font-weight: bold; /* Mettre le texte en gras */
+  font-family: 'Roboto', sans-serif; 
+  font-size: 2.2rem; 
+  font-weight: bold; 
   color: #333; 
   text-transform: uppercase;
   letter-spacing: 1px; 
   text-align: right; 
   color: #f1f1f1;
-  width: 150px;
+  /* width: 150px; */
 }
 
 .category-cards {
@@ -363,6 +294,8 @@ button:hover {
   width: 100%;
   flex-direction: row;
   flex-wrap: wrap;
+  padding: 3%;
+  z-index: 100;
 }
 
 .category-card {
@@ -421,7 +354,7 @@ button:hover {
 }
 
 .category-overlay button:hover {
-  background-color: #ff5e57; /* Couleur vive au survol pour un contraste fort */
+  background-color: #ff5e57; 
   border-color: #ff5e57;
 }
 
@@ -446,7 +379,74 @@ button:hover {
 
 
 .close-button {
-  z-index: 200;
-  margin-top: -25%;
-  /* margin-top: -45%; */
+  z-index: 2;
+  /* margin-top: -25%; */
 }
+
+/* Conteneur du bouton image */
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+/* Image du bouton */
+.restart-button {
+  width: 50px; /* Ajuste la taille selon tes besoins */
+  height: auto;
+  cursor: pointer;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+/* Effet au survol */
+.restart-button:hover {
+  transform: scale(1.1); /* Augmente la taille de l'image au survol */
+  filter: brightness(0.8); /* Assombrir l'image au survol, si désiré */
+}
+
+/* Si tu as une image différente pour le hover, tu peux le faire avec un effet CSS */
+.restart-button:hover {
+  content: url('./assets/restart-hover.png'); /* Change l'image au survol */
+}
+
+/* 
+.part-one-all {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.video-first {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+} */
+
+
+.part-one-all {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+  /* margin-top: 3%; */
+}
+
+.video-first {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+  /* padding-left: 55%; */
+}
+
+/* .text-overlay {
+  margin-left: -5%;
+  margin-top: 12%;
+} */

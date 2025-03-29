@@ -1,7 +1,7 @@
 {
     "amis": {
-      "image": "./assets/amis.jpg",
-      "image-bis": "./assets/amis-bis.jpg",
+      "image": "./assets/amis.png",
+      "image-bis": "./assets/amis-bis.png",
       "category": {
         "sortie": {
           "Soft": [
@@ -192,12 +192,50 @@
             "Je vais réparer ça de manière grandiose, je te promets.",
             "Je suis vraiment désolé, mais je vais me rattraper de manière mémorable."
           ]
+        },
+        "autre": {
+            "Soft": [
+              "Désolé, je n'ai pas pu venir à la sortie, un imprévu de dernière minute m'a retenu.",
+              "Je suis vraiment désolé, mais j'ai dû annuler à cause d'un petit contretemps.",
+              "Je t'avais promis, mais quelque chose d'urgent est survenu, je vais me rattraper.",
+              "Oups, je ne vais pas pouvoir être là ce soir. J'avais totalement oublié un autre engagement.",
+              "Désolé, je suis à la bourre, mais je vais essayer de rattraper le temps perdu !",
+              "Je m'excuse, il y a eu un changement de dernière minute, mais je pense à toi.",
+              "Désolé, je ne peux pas venir, il faut que je gère une urgence de travail.",
+              "Je suis vraiment désolé, mais un imprévu m'a forcé à annuler. Je vais vite me rattraper.",
+              "Je sais, tu m'attendais, mais j'ai eu un imprévu à gérer.",
+              "Désolé, je suis pris par une obligation de dernière minute."
+            ],
+            "Fun": [
+              "C'est la catastrophe, j'ai oublié la sortie à cause du boulot. Mais je vais me rattraper bientôt !",
+              "Je suis désolé, mais je me suis laissé emporter par une réunion qui n’en finissait plus.",
+              "J'avais vraiment prévu de venir, mais je me suis perdu dans des tâches urgentes.",
+              "C'est pas possible, le boulot m'a encore retenu. Promis, on se rattrape la prochaine fois !",
+              "Je voulais vraiment venir, mais j'ai complètement perdu la notion du temps avec mon boulot.",
+              "Je sais, c'est un peu nul, mais le travail m’a pris tout mon temps. Je vais me faire pardonner.",
+              "Désolé, la réunion a duré une éternité et je n'ai pas pu m'échapper.",
+              "Je me sens trop mal, j’ai oublié notre sortie à cause de mon agenda qui déborde.",
+              "J'ai fait une bourde, j'ai raté notre sortie. Mais t’inquiète, on remet ça !",
+              "Je me sens trop coupable, mais le boulot m’a volé ma soirée."
+            ],
+            "Hardcore": [
+              "Ouais, j'ai tout annulé pour un projet que je déteste. Je sais, c'est pourri, mais je vais me rattraper.",
+              "Je t'avais promis, mais franchement, ce projet m'a bouffé tout mon temps. Promis, je vais réparer ça !",
+              "Désolé, je t'ai oublié. Mais t'imagines le travail qui m'a pris tout ce temps ?",
+              "Je me suis fait engloutir par le boulot. Mais je vais réparer cette catastrophe, t'inquiète.",
+              "Je sais que j'ai déconné, mais je suis bloqué avec des projets qui m'empêchent de respirer.",
+              "Je suis dans une spirale de réunions et de deadlines. C'est vraiment la pagaille, mais je vais arranger ça.",
+              "Désolé, j'ai trop pris de retard avec ce projet. J'aurais voulu être là, mais c'est la loi du travail.",
+              "C'est une catastrophe, je t'avais promis. Mais le boulot m'a capturé comme jamais, désolé.",
+              "Je suis trop pris, mais je vais me rattraper, crois-moi. Ce projet m'a complètement absorbé.",
+              "Oups, encore une fois, je me suis fait prendre dans un tourbillon de boulot, je vais me faire pardonner."
+            ]
         }
       }
     },
     "famille": {
-      "image": "./assets/famille.jpg",
-      "image-bis": "./assets/famille-bis.jpg",
+      "image": "./assets/famille.png",
+      "image-bis": "./assets/famille-bis.png",
       "category": {
         "sortie": {
           "Soft": [
@@ -312,12 +350,50 @@
             "Je suis vraiment en retard, mais je vais me rattraper avec quelque chose de grandiose.",
             "Désolé, je suis à la bourre, mais ça va valoir le coup."
           ]
+        },
+        "autre": {
+            "Soft": [
+              "Désolé, je n'ai pas pu venir à la sortie, un imprévu de dernière minute m'a retenu.",
+              "Je suis vraiment désolé, mais j'ai dû annuler à cause d'un petit contretemps.",
+              "Je t'avais promis, mais quelque chose d'urgent est survenu, je vais me rattraper.",
+              "Oups, je ne vais pas pouvoir être là ce soir. J'avais totalement oublié un autre engagement.",
+              "Désolé, je suis à la bourre, mais je vais essayer de rattraper le temps perdu !",
+              "Je m'excuse, il y a eu un changement de dernière minute, mais je pense à toi.",
+              "Désolé, je ne peux pas venir, il faut que je gère une urgence de travail.",
+              "Je suis vraiment désolé, mais un imprévu m'a forcé à annuler. Je vais vite me rattraper.",
+              "Je sais, tu m'attendais, mais j'ai eu un imprévu à gérer.",
+              "Désolé, je suis pris par une obligation de dernière minute."
+            ],
+            "Fun": [
+              "C'est la catastrophe, j'ai oublié la sortie à cause du boulot. Mais je vais me rattraper bientôt !",
+              "Je suis désolé, mais je me suis laissé emporter par une réunion qui n’en finissait plus.",
+              "J'avais vraiment prévu de venir, mais je me suis perdu dans des tâches urgentes.",
+              "C'est pas possible, le boulot m'a encore retenu. Promis, on se rattrape la prochaine fois !",
+              "Je voulais vraiment venir, mais j'ai complètement perdu la notion du temps avec mon boulot.",
+              "Je sais, c'est un peu nul, mais le travail m’a pris tout mon temps. Je vais me faire pardonner.",
+              "Désolé, la réunion a duré une éternité et je n'ai pas pu m'échapper.",
+              "Je me sens trop mal, j’ai oublié notre sortie à cause de mon agenda qui déborde.",
+              "J'ai fait une bourde, j'ai raté notre sortie. Mais t’inquiète, on remet ça !",
+              "Je me sens trop coupable, mais le boulot m’a volé ma soirée."
+            ],
+            "Hardcore": [
+              "Ouais, j'ai tout annulé pour un projet que je déteste. Je sais, c'est pourri, mais je vais me rattraper.",
+              "Je t'avais promis, mais franchement, ce projet m'a bouffé tout mon temps. Promis, je vais réparer ça !",
+              "Désolé, je t'ai oublié. Mais t'imagines le travail qui m'a pris tout ce temps ?",
+              "Je me suis fait engloutir par le boulot. Mais je vais réparer cette catastrophe, t'inquiète.",
+              "Je sais que j'ai déconné, mais je suis bloqué avec des projets qui m'empêchent de respirer.",
+              "Je suis dans une spirale de réunions et de deadlines. C'est vraiment la pagaille, mais je vais arranger ça.",
+              "Désolé, j'ai trop pris de retard avec ce projet. J'aurais voulu être là, mais c'est la loi du travail.",
+              "C'est une catastrophe, je t'avais promis. Mais le boulot m'a capturé comme jamais, désolé.",
+              "Je suis trop pris, mais je vais me rattraper, crois-moi. Ce projet m'a complètement absorbé.",
+              "Oups, encore une fois, je me suis fait prendre dans un tourbillon de boulot, je vais me faire pardonner."
+            ]
         }
       }
     },
     "boss": {
-      "image": "./assets/boss.jpg",
-      "image-bis": "./assets/boss-bis.jpg",
+      "image": "./assets/boss.png",
+      "image-bis": "./assets/boss-bis.png",
       "category": {
         "deadline": {
           "Soft": [
@@ -508,6 +584,44 @@
             "Je vais devoir partir plus tôt, mais ce projet sera livré à temps, c’est promis.",
             "Désolé, je dois partir plus tôt, mais je vais finir ce projet dans les temps."
           ]
+        },
+        "autre": {
+            "Soft": [
+              "Désolé, je n'ai pas pu venir à la sortie, un imprévu de dernière minute m'a retenu.",
+              "Je suis vraiment désolé, mais j'ai dû annuler à cause d'un petit contretemps.",
+              "Je t'avais promis, mais quelque chose d'urgent est survenu, je vais me rattraper.",
+              "Oups, je ne vais pas pouvoir être là ce soir. J'avais totalement oublié un autre engagement.",
+              "Désolé, je suis à la bourre, mais je vais essayer de rattraper le temps perdu !",
+              "Je m'excuse, il y a eu un changement de dernière minute, mais je pense à toi.",
+              "Désolé, je ne peux pas venir, il faut que je gère une urgence de travail.",
+              "Je suis vraiment désolé, mais un imprévu m'a forcé à annuler. Je vais vite me rattraper.",
+              "Je sais, tu m'attendais, mais j'ai eu un imprévu à gérer.",
+              "Désolé, je suis pris par une obligation de dernière minute."
+            ],
+            "Fun": [
+              "C'est la catastrophe, j'ai oublié la sortie à cause du boulot. Mais je vais me rattraper bientôt !",
+              "Je suis désolé, mais je me suis laissé emporter par une réunion qui n’en finissait plus.",
+              "J'avais vraiment prévu de venir, mais je me suis perdu dans des tâches urgentes.",
+              "C'est pas possible, le boulot m'a encore retenu. Promis, on se rattrape la prochaine fois !",
+              "Je voulais vraiment venir, mais j'ai complètement perdu la notion du temps avec mon boulot.",
+              "Je sais, c'est un peu nul, mais le travail m’a pris tout mon temps. Je vais me faire pardonner.",
+              "Désolé, la réunion a duré une éternité et je n'ai pas pu m'échapper.",
+              "Je me sens trop mal, j’ai oublié notre sortie à cause de mon agenda qui déborde.",
+              "J'ai fait une bourde, j'ai raté notre sortie. Mais t’inquiète, on remet ça !",
+              "Je me sens trop coupable, mais le boulot m’a volé ma soirée."
+            ],
+            "Hardcore": [
+              "Ouais, j'ai tout annulé pour un projet que je déteste. Je sais, c'est pourri, mais je vais me rattraper.",
+              "Je t'avais promis, mais franchement, ce projet m'a bouffé tout mon temps. Promis, je vais réparer ça !",
+              "Désolé, je t'ai oublié. Mais t'imagines le travail qui m'a pris tout ce temps ?",
+              "Je me suis fait engloutir par le boulot. Mais je vais réparer cette catastrophe, t'inquiète.",
+              "Je sais que j'ai déconné, mais je suis bloqué avec des projets qui m'empêchent de respirer.",
+              "Je suis dans une spirale de réunions et de deadlines. C'est vraiment la pagaille, mais je vais arranger ça.",
+              "Désolé, j'ai trop pris de retard avec ce projet. J'aurais voulu être là, mais c'est la loi du travail.",
+              "C'est une catastrophe, je t'avais promis. Mais le boulot m'a capturé comme jamais, désolé.",
+              "Je suis trop pris, mais je vais me rattraper, crois-moi. Ce projet m'a complètement absorbé.",
+              "Oups, encore une fois, je me suis fait prendre dans un tourbillon de boulot, je vais me faire pardonner."
+            ]
         }
       }
     }
