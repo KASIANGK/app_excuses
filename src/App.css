@@ -1,0 +1,815 @@
+.hidden {
+  display: none !important; /* Cache complètement l'élément */
+}
+
+.app {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10; /* S'assure que l'overlay est bien au-dessus */
+  font-family: 'Roboto', sans-serif;
+  position: relative;
+}
+/* --- Conteneur principal avec la vidéo FIXE en arrière-plan --- */
+.video-container {
+  position: fixed; /* Fixe la vidéo en arrière-plan */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  z-index: 1; /* Derrière le contenu */
+}
+
+.app-title {
+  position: absolute;
+  top: 5%; /* Ajuste la position verticale */
+  left: 60%;
+  transform: translateX(-50%);
+  text-align: center;
+  color: white;
+  z-index: 20000; /* Au-dessus de la vidéo */
+  width: 100%;
+  text-align: left;
+}
+
+.app-title h2, h1 {
+  margin: 0;
+}
+
+.app-title-second {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  gap: 20px;
+}
+
+.app-title-second img {
+  width: 75px;
+  height: 50px;
+  cursor: pointer;
+  position: relative; /* Assure que l'image reste au-dessus */
+  z-index: 100; /* Doit être supérieur à .video-container */
+}
+
+/* --- Vidéo en arrière-plan (plein écran) --- */
+.background-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* --- Wrapper du contenu qui peut défiler --- */
+.container-wrapper {
+  position: relative;
+  width: 100%;
+  min-height: 200vh; /* Permet un scroll vertical */
+  overflow: auto; /* Active le scroll */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* --- Contenu principal centré, avec hauteur dynamique --- */
+.container {
+  width: 80%;
+  max-width: 800px;
+  text-align: center;
+  color: white;
+  min-height: 100vh; /* Assure que tout est visible */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.container button {
+  pointer-events: auto; /* Permet au bouton d'être cliquable */
+}
+
+.container-empty {
+  color: #03B162;
+  height: 520px;
+}
+
+.exit-text {
+  font-size: 5.3rem;
+  font-weight:900;
+  text-transform: uppercase;
+  text-align: center;
+  margin: 0;
+}
+ 
+.exit-text span {
+  color: white; 
+  text-shadow: 
+      2px 2px 0px #02B160, 
+      -2px -2px 0px #02B160, 
+      2px -2px 0px #02B160, 
+      -2px 2px 0px #02B160; /* Ombres pour créer l'effet de bordure */
+}
+
+/* --- Flèche pour afficher les étapes --- */
+
+.scroll-arrow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: -10px;
+  position: relative;
+  flex-direction: column !important;
+}
+
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.5), 
+                0 0 10px rgba(255, 255, 255, 0.4), 
+                0 0 15px rgba(255, 255, 255, 0.3);
+  }
+  100% {
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.916), 
+                0 0 20px rgba(255, 255, 255, 0.774), 
+                0 0 30px rgba(255, 255, 255, 0.675);
+  }
+}
+
+.scroll-arrow p {
+  padding: 200px;
+  padding-top: 430px;
+  border: 3px solid white;
+  border-radius: 15px;
+  margin-top: -150%;
+  background: rgba(255, 255, 255, 0.1); /* Légère transparence */
+  color: white;
+  text-align: center;
+  animation: glow 1.5s infinite alternate; /* Animation lumineuse */
+}
+
+
+.scroll-arrow:hover p {
+  background-color: #ffffff3d;
+}
+
+/* Effets sur le bouton */
+.kave-btn {
+  position: relative;
+  z-index: 10;
+  border: solid 1px rgba(0, 252, 113, 0.3);
+  background: #02b15f94;
+  text-transform: uppercase;
+  transition: all 0.25s ease, transform 0.3s ease;
+  box-shadow: 0 0 20px #0fe581;
+  color: rgba(28, 227, 68, 0.7);
+  font-family: "Roboto", sans-serif;
+  font-weight: normal;
+  letter-spacing: 1.8px;
+  width: 200px;
+  height: 70px;
+  padding: 0;
+  outline: none;
+  cursor: pointer;
+  pointer-events: auto !important;
+  margin-left: 10px;
+  z-index: 100000000;
+  /* margin-top: 25%; */
+}
+
+.kave-btn:before, .kave-btn:after {
+  content: "";
+  position: absolute;
+  width: 60px;
+  height: 1px;
+  background: rgba(0, 214, 252, 1);
+  transition: all 0.4s ease-in-out;
+}
+
+.kave-btn:before {
+  top: 0;
+  left: 10%;
+}
+
+.kave-btn:after {
+  bottom: 0;
+  right: 10%;
+}
+
+.kave-btn .kave-line:before,
+.kave-btn .kave-line:after {
+  content: "";
+  position: absolute;
+  width: 1px;
+  height: 20px;
+  background: rgba(0, 214, 252, 1);
+  transition: all 0.4s ease-in-out;
+}
+
+.kave-btn .kave-line:before {
+  bottom: 30%;
+  right: 0;
+}
+
+.kave-btn .kave-line:after {
+  top: 30%;
+  left: 0;
+}
+
+.kave-btn:hover {
+  transform: scale(1.08); 
+  box-shadow: 0 0 80px rgba(0, 214, 252, 0.9); 
+  width: 100px;
+  height: 50px;
+  background-color: #02B160;
+}
+
+.kave-btn:hover:before {
+  left: 0;
+  width: 20px; 
+}
+
+.kave-btn:hover:after {
+  right: 0;
+  width: 20px;
+}
+
+.kave-btn:hover .kave-line:before {
+  height: 40px;
+  bottom: 0;
+}
+
+.kave-btn:hover .kave-line:after {
+  height: 40px;
+  top: 0;
+}
+
+.kave-btn:hover .arrow-image {
+  transform: scale(1.3);
+  transition: transform 0.3s ease; 
+}
+
+.kave-p {
+  transition: background-color 0.3s ease-in-out;
+  z-index: 100000;
+  pointer-events: all;
+}
+
+.kave-p:hover {
+  background-color: #ffffff3d;
+}
+
+.arrow-image {
+  width: 35px;
+  height: auto;
+  filter: drop-shadow(0px 0px 3px rgba(0, 252, 126, 0.8)); 
+  transition: transform 0.3s ease;
+}
+
+
+/* --- Elevator (animation) --- */
+.elevator {
+  margin-top: 50px;
+  transition: opacity 0.5s ease-in-out;
+  z-index: 100;
+}
+
+.elevator.show {
+  opacity: 1;
+}
+
+.elevator.hide {
+  opacity: 0;
+}
+
+.next-section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; 
+  align-items: center;
+  height: 100vh;
+  color: white;
+  opacity: 1;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+/* --- Section des étapes (hidden par défaut) --- */
+.steps {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;;
+  width: 100%;
+  height: 100%;
+  /* background: rgba(0, 0, 0, 0.9);  */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000; /* Assure que steps est AU-DESSUS */
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+}
+
+.steps.visible {
+  opacity: 1;
+  visibility: visible;
+}
+.steps:not(.visible) {
+  display: none;
+}
+
+
+/* --- Overlay semi-transparent lors des étapes --- */
+/* .step-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 10;
+} */
+
+
+/* --- Bouton et styles divers --- */
+button {
+  background: #ff9800;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 18px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+select {
+  padding: 10px;
+  font-size: 16px;
+  margin-top: 20px;
+}
+
+
+@media (min-width: 1142px) {
+  .scroll-arrow p {
+    padding: 200px;
+    padding-top: 430px;
+    border: none;
+    border-radius: 0px;
+    margin-top: -150%;
+    background: rgba(255, 255, 255, 0.1); /* Légère transparence */
+    color: white;
+    text-align: center;
+    animation: none; /* Applique l'effet lumineux */
+  }
+  .scroll-arrow p {
+    background-color: #ffffff00;
+  }
+}
+
+@media (min-width: 1143px) {
+  .scroll-arrow p {
+    padding: 200px;
+    padding-top: 430px;
+    border: none;
+    border-radius: 0 !important;
+    margin-top: -150%;
+    background: rgba(255, 255, 255, 0); /* Légère transparence */
+    color: white;
+    text-align: center;
+    animation: none; /* Applique l'effet lumineux */
+  }
+}
+
+.step-title {
+  display: flex;
+  justify-content: center;
+  /* padding-right: 35px;  */
+  width: 105%;
+  gap: 20px;
+  align-items: center;
+  margin-bottom: 5px;
+  margin-top: -10px;
+}
+
+.title {
+  font-family: 'Roboto', sans-serif; 
+  font-size: 2.2rem; 
+  font-weight: bold; 
+  color: #333; 
+  text-transform: uppercase;
+  letter-spacing: 1px; 
+  text-align: right; 
+  color: #f1f1f1;
+  width: 100%;
+  text-align: left;
+}
+
+/* Conteneur du bouton image */
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* margin-top: 20px; */
+}
+
+/* Image du bouton */
+.restart-button {
+  width: 50px; /* Ajuste la taille selon tes besoins */
+  height: auto;
+  cursor: pointer;
+  transition: transform 0.3s ease, filter 0.3s ease;
+  padding-right: 28px;
+
+}
+/* Effet au survol */
+.restart-button:hover {
+  transform: scale(1.1); /* Augmente la taille de l'image au survol */
+  filter: brightness(0.8); /* Assombrir l'image au survol, si désiré */
+}
+
+/* Si tu as une image différente pour le hover, tu peux le faire avec un effet CSS */
+.restart-button:hover {
+  content: url('./assets/restart-hover.png'); /* Change l'image au survol */
+}
+
+.step-one {
+  position: relative; 
+  width: 100%;
+  height: 100%; /* Pleine hauteur de l'écran */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  z-index: 1000; /* Au-dessus de tout */
+  /* overflow: hidden; */
+}
+
+
+/* La vidéo en fond */
+.step1-bg-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Remplit tout l'écran sans déformation */
+  z-index: -1; /* Met la vidéo derrière tout */
+}
+
+/* Conteneur de contenu au-dessus de la vidéo */
+.step1-container {
+  position: relative;  /* Assure que ça reste au-dessus */
+  z-index: 10; /* Doit être supérieur à -1 pour être visible */
+  text-align: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-radius: 10px;
+  margin-top: 30px;
+}
+
+.step1-container {
+  position: absolute; 
+  top: 0%; /* Ajuste la hauteur pour qu'il soit vers le haut */
+  left: 50%; /* Centre horizontalement */
+  transform: translateX(-50%); /* Centre par rapport à son propre width */
+  z-index: 2; /* Toujours au-dessus de la vidéo */
+  color: white;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  width: 60%;
+  /* max-height: 80vh; 
+  overflow-y: auto;  */
+}
+
+@keyframes slideInBounce {
+  0% {
+      transform: translateX(100%) scaleY(0);
+      opacity: 0;
+  }
+  60% {
+      transform: translateX(0) scaleY(1);
+      opacity: 1;
+  }
+  80% {
+      transform: translateX(0) translateY(-5px);
+  }
+  100% {
+      transform: translateX(0) translateY(0);
+  }
+}
+
+@keyframes bounce {
+  0%, 100% {
+      transform: translateY(0);
+  }
+  50% {
+      transform: translateY(-5px);
+  }
+}
+
+.step1-txt {
+  background-color: #000000c3;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  text-align: start;
+  width: 100%;
+  /* margin-right: -10%; */
+  /* width: 70%; */
+  /* margin-right: -35%; */
+  margin-top: 0%;
+  padding: 25px;
+  font-size: 1.3em;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  border: 3px solid rgb(255, 255, 255);
+  border-radius: 15px;
+  margin-bottom: 7%;
+  /* Ajout de l'animation */
+  animation: slideInBounce 1s ease-out, bounce 1s infinite ease-in-out 1.2s;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: bold;
+}
+  
+.step1-txt.hovered {
+  background-color: #f1f1f1c3;
+  transition: cubic-bezier(0.075, 0.82, 0.165, 1);
+  color: #000000;
+  border: #000000 3px solid;
+}
+
+.step1-txt p {
+  margin: 0;
+  padding-right: 5%;
+}
+
+/* .steps {
+  pointer-events: none;
+} */
+
+.arrow-image,
+.app-title-second img {
+  pointer-events: auto;
+}
+
+
+.carousel-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden; /* Masque tout ce qui déborde */
+  width: 100%;
+}
+/* .category-cards {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: nowrap;
+  width: 100%;
+  max-width: 100%;
+  padding-bottom: 10px;
+  scrollbar-width: thin;
+  scrollbar-color: white transparent;
+  min-height: 350px;
+}
+.category-cards {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding-bottom: 10px;
+  padding-left: 50px;
+  padding-right: 50px;
+} */
+.category-cards {
+  display: flex;
+  justify-content: flex-start; /* Permet d'afficher les cartes à partir du début */
+  align-items: center;
+  gap: 20px;
+  flex-wrap: nowrap;
+  overflow-x: scroll; /* Assure un vrai défilement */
+  scroll-behavior: smooth;
+  padding-bottom: 10px;
+  padding-left: 50px;
+  padding-right: 50px;
+  scrollbar-width: thin; /* Rend la barre de scroll fine */
+  scrollbar-color: white transparent;
+  min-height: 350px;
+}
+
+.category-card {
+  position: relative;
+  height: 300px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease;
+  background-size: cover;
+  background-position: center;
+  cursor: pointer;
+  border: 2px solid #f1f1f1;
+  flex: 0 0 auto;
+  width: 200px; /* Fixe la largeur de chaque carte */
+}
+
+.category-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7);
+  border-color: #000000;
+  background-color: rgba(255, 255, 255, 0.736);
+}
+
+
+.category-card {
+  position: relative;
+  height: 300px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease;
+  background-size: cover;
+  background-position: center;
+  background-color: #02b15f3c; /* Fallback background color */
+  cursor: pointer;
+  border: 2px solid #f1f1f1; /* Crée une bordure brute et nette autour de la carte */
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.category-card {
+  flex: 0 0 auto; /* Empêche le redimensionnement */
+  width: 200px; /* Largeur fixe pour chaque carte */
+  background-size: cover;
+  background-position: center;
+}
+
+.category-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7); /* Ombre intense au survol */
+  border-color: #000000; /* Change la bordure en couleur vive au survol */
+  background-color: rgba(255, 255, 255, 0.736);
+}
+
+.category-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.5); /* Ombre sombre pour un effet dramatique */
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  border-top: 2px solid #f1f1f1; /* Bordure légère pour séparer l'overlay du fond */
+}
+.category-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.5); /* Ombre sombre */
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(100%);
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  border-top: 2px solid #f1f1f1;
+}
+
+.category-card:hover .category-overlay {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.category-card:hover .category-overlay {
+  opacity: 1; /* Montre le texte seulement au survol */
+}
+
+.category-overlay button {
+  background-color: transparent;
+  color: #fff;
+  border: 2px solid #f1f1f1;
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.category-overlay button:hover {
+  background-color: #000000; 
+  border-color: #000000;
+}
+
+.boutons {
+  background-color: transparent;
+  color: #fff;
+  border: 2px solid #f1f1f1;
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.boutons:hover {
+  background-color: #000000; 
+  border-color: #000000;
+}
+
+.category-card:hover {
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% {
+      transform: scale(1);
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  }
+  50% {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+  }
+  100% {
+      transform: scale(1);
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  }
+}
+
+
+.close-button {
+  z-index: 2;
+  /* margin-top: -25%; */
+}
+
+.styled-select {
+  appearance: none; /* Supprime le style par défaut */
+  background-color: #1a1a1a; /* Fond sombre */
+  color: #fff; /* Texte blanc */
+  font-size: 16px;
+  font-weight: bold;
+  border: 3px solid #0da629; /* Bordure verte brute */
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  text-transform: uppercase;
+}
+
+.styled-select:hover {
+  background-color: white; /* Effet brut au survol */
+  color: #1a1a1a;
+}
+
+.styled-select:focus {
+  outline: none;
+  border-color: #0da629; /* Effet urbain dynamique */
+  border: 3px solid white;
+}
+
+.styled-select option {
+  background-color: #1a1a1a !important; /* Fond sombre par défaut */
+  color: #fff !important;
+  padding: 10px;
+}
+
+/* Forcer la couleur de fond et du texte des options au survol */
+.styled-select option:hover,
+.styled-select option:focus {
+  background-color: #0da629 !important; /* Vert brut */
+  color: #1a1a1a !important;
+}
+
+/* Changer la couleur quand une option est sélectionnée */
+.styled-select option:checked {
+  background-color: #0da629 !important; /* Vert brut */
+  color: #1a1a1a !important;
+}
+
