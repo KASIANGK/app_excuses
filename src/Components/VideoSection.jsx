@@ -70,7 +70,8 @@ const VideoSection = ({ handleVideoEnd, showArrow, handleMouseEnter, handleMouse
         <div className="video-section-container">
             <motion.div className="video-section">
                 <video
-                    src="./assets/videooo.mp4"
+                    src="./assets/intro.mp4"
+                    // src="./assets/videooo.mp4"
                     autoPlay
                     muted
                     onEnded={handleVideoEnd}

@@ -20,13 +20,13 @@ export default function App() {
     const [isSmallScreen, setIsSmallScreen] = useState(false);
     const [isArrowVisible, setIsArrowVisible] = useState(false);
     const [isTransitionDone, setIsTransitionDone] = useState(false);
-    const [hasElevatorAppeared, setHasElevatorAppeared] = useState(false);
     const [showArrow, setShowArrow] = useState(false);
     const carouselRef = useRef(null);
-    const [isStepOne, setIsStepOne] = useState(false)
-    const [showVideoSection, setShowVideoSection] = useState(true); 
-    const [isNextSectionVisible, setIsNextSectionVisible] = useState(false);
     const [showSteps, setShowSteps] = useState(false);
+    const [isStepOne, setIsStepOne] = useState(false);
+    const [isStepTwo, setIsStepTwo] = useState(false);
+    const [isStepThree, setIsStepThree] = useState(false);
+    const [isStepFour, setIsStepFour] = useState(false);
 
     const handleCloseMainSection = () => {
         // Si on est à l'étape 0, on ne doit pas réduire l'étape, on garde la vidéo visible.
@@ -153,7 +153,7 @@ export default function App() {
         setIsVideoEnded(true);  
         setTimeout(() => {
             setIsStepOne(true);
-        }, 100);
+        }, 3);
       };
 
 
@@ -297,9 +297,96 @@ export default function App() {
         }
     };
 
+    const videoRef = useRef(null);
+    const videoSegments = {
+        0: [0, 0.9],   // intro
+        1: [1.5, 2.7],   // step 1
+        2: [3, 4.004],   // step 2
+        3: [4.2, 6],   // step 3
+        4: [6.2, 8],   // step 4 / outro
+      };
+
+      
+      
+      setTimeout(() => {
+        setIsStepOne(true);
+    }, 3000); // 3000ms = 3s
+
+    useEffect(() => {
+        const video = videoRef.current;
+        if (!video) return;
+
+        const [start, end] = videoSegments[step];
+
+        const handleTimeUpdate = () => {
+            // Si la vidéo atteint la fin du segment pour l'étape actuelle
+            if (video.currentTime >= end) {
+                video.pause(); // Arrêter la vidéo
+
+                // Pour chaque étape, déclencher l'apparition du contenu après 3 secondes
+                if (step === 1) {
+                    setTimeout(() => {
+                        setIsStepOne(true);
+                    }, 3200);
+                }
+
+                if (step === 2) {
+                    setTimeout(() => {
+                        setIsStepTwo(true);
+                    }, 100);
+                }
+
+                if (step === 3) {
+                    setTimeout(() => {
+                        setIsStepThree(true);
+                    }, 50);
+                }
+
+                if (step === 4) {
+                    setTimeout(() => {
+                        setIsStepFour(true);
+                    }, 10);
+                }
+            }
+        };
+
+        // Réinitialiser la vidéo à l'heure de début du segment
+        video.currentTime = start;
+        video.play(); // Lire la vidéo
+
+        // Écoute l'événement timeupdate pour savoir quand la vidéo atteint la fin du segment
+        video.addEventListener('timeupdate', handleTimeUpdate);
+
+        // Nettoyer l'écouteur quand le composant est démonté ou que l'étape change
+        return () => {
+            video.removeEventListener('timeupdate', handleTimeUpdate);
+        };
+    }, [step]); // Relancer à chaque changement de step
+
+
+    const [isOpen, setIsOpen] = useState(false);
+
+    // Récupération des catégories en fonction du "victim"
+    const categories = Object.keys(categoryData[victim]?.category || {});
+  
+    const handleSelect = (category) => {
+      handleCategorySelect(category);
+      setIsOpen(false);  // Fermer la liste des options après sélection
+    };
+  
+      // Réinitialiser isVisible lorsque l'utilisateur quitte l'étape 0
+    useEffect(() => {
+        if (step > 0) {
+        setIsVisible(false); // Cacher le texte une fois que l'utilisateur quitte step 0
+        } else {
+        setIsVisible(true);  // Garder le texte visible quand on est encore sur step 0
+        }
+    }, [step]); // Ce useEffect dépend de la valeur de `step`
+
     return (
         <div className='app'>
             <div className="video-container">
+            {step === 0 && (
                 <div className='app-title'>
                     <h2>YOUR ULTIME</h2>
                     <div className='app-title-second'>
@@ -307,18 +394,22 @@ export default function App() {
                         <img src='./assets/power.png' onClick={scrollToElevator} />
                     </div>
                 </div>
+            )}
                 {/* Vidéo en arrière-plan */}
                 <video
-                    src="./assets/videooo.mp4"
-                    autoPlay
-                    muted
-                    className="background-video"
-                ></video>
+                ref={videoRef}
+                src="./assets/timeline-ogg.mp4"
+                autoPlay={false}
+                muted
+                preload="auto"
+                playsInline
+                className="background-video"
+                />
             </div>
+
 
             {/* Contenu de départ, centré sur la vidéo */}
             <div className={`container-wrapper ${step > 0 ? 'hidden' : ''}`}>                <div className="container">
-                    {/* Section pour le texte */}
                     <div className='container-empty'>
                         <p></p>
                     </div>
@@ -382,7 +473,7 @@ export default function App() {
 
                 </div>
                 <div className={`elevator`}>
-                    <img src='./assets/elevator5-wg.png' />
+                    <img src='./assets/elevator-11.png' />
                 </div>
             </div>
 
@@ -401,17 +492,7 @@ export default function App() {
                                 initial={{ opacity: 0 }} 
                                 animate={{ opacity: 1 }} 
                                 transition={{ duration: 0.5 }}
-                                // animate={{ opacity: isStepOne ? 1 : 0 }}  
                             >
-                                {/* Ajout de la vidéo en arrière-plan */}
-                                <video 
-                                    src="./assets/videooo2.mp4"
-                                    autoPlay
-                                    muted
-                                    preload="auto"
-                                    className="background-video step1-bg-video"
-                                    onEnded={handleVideoEndSecond}
-                                ></video>
                                 {isStepOne && (
                                     <div className='step1-container'>
                                         <div className='step-title'>
@@ -460,76 +541,120 @@ export default function App() {
                             </motion.div>
                         )}
 
-                        {step === 2 && (
-                            <div className="step2">
-                                <video 
-                                    src="./assets/videooo2.mp4"
-                                    autoPlay
-                                    muted
-                                    preload="auto"
-                                    className="background-video step1-bg-video"
-                                    onEnded={handleVideoEndSecond}
-                                ></video>
-                                <h2 className="title">Choisis le contexte</h2>
-                                <div className="button-container">
-                                    <img 
-                                        src="./assets/restart.png" 
-                                        alt="Recommencer"
-                                        className="restart-button"
-                                        onClick={() => handleCloseMainSection()}
-                                    />
+                        {step === 2 && isStepTwo && ( 
+                            <motion.div className="step-two" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}>
+                                <div className="step2">
+                                    <div className='steps-title-div'>
+                                        <h2 className="title">Choisis le contexte</h2>
+                                        <div className="button-container">
+                                            <img 
+                                                src="./assets/restart.png" 
+                                                alt="Recommencer"
+                                                className="restart-button"
+                                                onClick={() => handleCloseMainSection()}
+                                            />
+                                        </div>
+                                    </div>
+                                    <div className="custom-select-container" style={{ position: 'relative', width: '200px' }}>
+                                        <div
+                                            className="custom-select-box"
+                                            onClick={() => setIsOpen(!isOpen)}
+                                        >
+                                            SELECTIONNE UN CONTEXTE
+                                        </div>
+
+                                        {isOpen && (
+                                            <div
+                                            className="custom-select-options styled-select"
+                                            style={{
+                                                position: 'absolute',
+                                                top: '100%',
+                                                left: 0,
+                                                right: 0,
+                                                backgroundColor: '#006400', // Vert foncé
+                                                zIndex: 10,
+                                                borderRadius: '4px',
+                                            }}
+                                            >
+                                            {categories.map((catKey) => (
+                                                <div
+                                                key={catKey}
+                                                onClick={() => handleSelect(catKey)}
+                                                style={{
+                                                    backgroundColor: '#1F3A2E', // Vert foncé
+                                                    color: 'white',
+                                                    cursor: 'pointer',
+                                                }}
+                                                onMouseEnter={(e) => (e.target.style.backgroundColor = '#D3D3D3')} // Hover : gris clair
+                                                onMouseLeave={(e) => (e.target.style.backgroundColor = '#1F3A2E')} // Hover : vert foncé
+                                                >
+                                                {catKey}
+                                                </div>
+                                            ))}
+                                            </div>
+                                        )}
+                                    </div>
                                 </div>
-                                <select className="styled-select" onChange={(e) => handleCategorySelect(e.target.value)}>
-                                    <option value="">Sélectionne un contexte</option>
-                                    {Object.keys(categoryData[victim]?.category || {}).map((catKey) => (
-                                        <option key={catKey} value={catKey}>{catKey}</option>
-                                    ))}
-                                </select>
-                            </div>
+                            </motion.div>
                         )}
 
-                        {step === 3 && (
-                            <div className="step3">
-                                <video 
-                                    src="./assets/videooo2.mp4"
-                                    autoPlay
-                                    muted
-                                    preload="auto"
-                                    className="background-video step1-bg-video"
-                                    onEnded={handleVideoEndSecond}
-                                ></video>
-                                <h2 className="title">Choisis le level</h2>
-                                <div className="button-container">
-                                    <img 
-                                        src="./assets/restart.png" 
-                                        alt="Recommencer"
-                                        className="restart-button"
-                                        onClick={() => handleCloseMainSection()}
-                                    />
+                        {step === 3 && isStepThree && (
+                            <motion.div className="step-three" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}>
+                                <div className="step3">
+                                    <div className='steps-title-div'>
+                                        <h2 className="title">Choisis le level</h2>
+                                        <div className="button-container">
+                                            <div className="restart-wrapper">
+                                                <img 
+                                                src="./assets/restart.png" 
+                                                alt="Recommencer"
+                                                className="restart-button"
+                                                onClick={() => handleCloseMainSection()}
+                                                />
+                                                <span className="restart-text">restart</span>
+                                            </div>
+                                        </div>
+
+                                        {/* <div className="button-container">
+                                            <img 
+                                                src="./assets/restart.png" 
+                                                alt="Recommencer"
+                                                className="restart-button"
+                                                onClick={() => handleCloseMainSection()}
+                                            />
+                                        </div> */}
+                                    </div>
+                                    <div className='step3-btn'>
+                                        {['Soft', 'Fun', 'Hardcore'].map((levelOption) => (
+                                            <button className='boutons' key={levelOption} onClick={() => handleLevelSelect(levelOption)}>
+                                                {levelOption}
+                                            </button>
+                                        ))}
+                                    </div>
                                 </div>
-                                {['Soft', 'Fun', 'Hardcore'].map((levelOption) => (
-                                    <button className='boutons' key={levelOption} onClick={() => handleLevelSelect(levelOption)}>
-                                        {levelOption}
-                                    </button>
-                                ))}
-                            </div>
+                            </motion.div>               
                         )}
 
-                        {step === 4 && (
-                            <div className='excuse-generee'>
-                                <h1>Voici ton excuse chacal !</h1>
-                                <div className="button-container">
-                                    <img 
-                                        src="./assets/restart.png" 
-                                        alt="Recommencer"
-                                        className="restart-button"
-                                        onClick={() => handleCloseMainSection()}
-                                    />
+                        {step === 4 && isStepFour && (
+                            <motion.div className="step-four" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}>
+                                <div className='excuse-generee'>
+                                    <h1>VOICI TON EXCUSE CHACAL !</h1>
+                                    <p>{excuse}</p>
+                                    <div className='step4-btn'>
+                                        <button className="boutons" onClick={generateAnotherExcuse}>Autre</button> 
+                                        <button className="boutons" onClick={handleShare}>Partager</button>
+                                        <div className="button-container">
+                                            <img 
+                                                src="./assets/restart.png" 
+                                                alt="Recommencer"
+                                                className="restart-button"
+                                                onClick={() => handleCloseMainSection()}
+                                            />
+                                        </div>
+                                    </div>
                                 </div>
-                                <p>{excuse}</p>
-                                <button onClick={generateAnotherExcuse}>Autre</button> 
-                                <button onClick={handleShare}>Partager</button>
-                            </div>
+                            </motion.div>               
+
                         )}
                     </motion.div>
                 )}

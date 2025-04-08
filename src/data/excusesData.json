@@ -1,7 +1,7 @@
 {
     "boss": {
       "image": "./assets/boss.png",
-      "image-bis": "./assets/boss-bis.png",
+      "image-bis": "./assets/b.png",
       "category": {
         "deadline": {
           "Soft": [
@@ -33,7 +33,7 @@
             "Je sais que je suis en retard, mais je vais tout compenser avec un super résultat."
           ]
         },
-        "heures_sup": {
+        "heures sup": {
             "Soft": [
             "J'aimerais vraiment aider, mais j’ai des engagements personnels ce soir. Je peux reprendre demain matin en pleine forme !",
             "Je comprends l’urgence, mais j’ai déjà un autre engagement. Je peux organiser mon travail pour être plus efficace demain.",
@@ -224,7 +224,7 @@
       },
       "amis": {
         "image": "./assets/amis.png",
-        "image-bis": "./assets/amis-bis.png",
+        "image-bis": "./assets/a.png",
         "category": {
           "sortie": {
             "Soft": [
@@ -458,7 +458,7 @@
       },
       "famille": {
         "image": "./assets/famille.png",
-        "image-bis": "./assets/famille-bis.png",
+        "image-bis": "./assets/f.png",
         "category": {
           "sortie": {
             "Soft": [

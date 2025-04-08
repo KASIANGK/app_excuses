@@ -23,6 +23,7 @@
   z-index: 1; /* Derrière le contenu */
 }
 
+
 .app-title {
   position: absolute;
   top: 5%; /* Ajuste la position verticale */
@@ -63,6 +64,8 @@
   top: 0;
   left: 0;
 }
+
+
 
 /* --- Wrapper du contenu qui peut défiler --- */
 .container-wrapper {
@@ -111,10 +114,10 @@
 .exit-text span {
   color: white; 
   text-shadow: 
-      2px 2px 0px #02B160, 
-      -2px -2px 0px #02B160, 
-      2px -2px 0px #02B160, 
-      -2px 2px 0px #02B160; /* Ombres pour créer l'effet de bordure */
+      2px 2px 0px #56785d, 
+      -2px -2px 0px #56785d, 
+      2px -2px 0px #56785d, 
+      -2px 2px 0px #56785d; /* Ombres pour créer l'effet de bordure */
 }
 
 /* --- Flèche pour afficher les étapes --- */
@@ -163,11 +166,11 @@
   position: relative;
   z-index: 10;
   border: solid 1px rgba(0, 252, 113, 0.3);
-  background: #02b15f94;
+  background: #64855fb1;
   text-transform: uppercase;
   transition: all 0.25s ease, transform 0.3s ease;
-  box-shadow: 0 0 20px #0fe581;
-  color: rgba(28, 227, 68, 0.7);
+  box-shadow: 0 0 20px #6a855f;
+  color: rgba(33, 154, 35, 0.7);
   font-family: "Roboto", sans-serif;
   font-weight: normal;
   letter-spacing: 1.8px;
@@ -226,7 +229,7 @@
   box-shadow: 0 0 80px rgba(0, 214, 252, 0.9); 
   width: 100px;
   height: 50px;
-  background-color: #02B160;
+  background-color: #376142;
 }
 
 .kave-btn:hover:before {
@@ -287,6 +290,10 @@
   opacity: 0;
 }
 
+.elevator img {
+  width: 570px;
+}
+
 .next-section {
   width: 100%;
   display: flex;
@@ -297,6 +304,7 @@
   color: white;
   opacity: 1;
   transition: opacity 0.5s ease, transform 0.5s ease;
+  margin-top: -1.5%;
 }
 
 /* --- Section des étapes (hidden par défaut) --- */
@@ -319,6 +327,14 @@
   transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
 }
 
+.steps-title-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70%;
+  gap: 15px;
+}
+
 .steps.visible {
   opacity: 1;
   visibility: visible;
@@ -327,21 +343,24 @@
   display: none;
 }
 
-
-/* --- Overlay semi-transparent lors des étapes --- */
-/* .step-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+.step2, .step3 {
   display: flex;
-  align-items: center;
+  flex-direction: column;
   justify-content: center;
-  background: rgba(0, 0, 0, 0.7);
-  z-index: 10;
-} */
+  align-items: center;
+}
 
+.step3-btn {
+  display: flex;
+  gap: 10px;
+}
+.step4-btn {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
 
 /* --- Bouton et styles divers --- */
 button {
@@ -358,6 +377,49 @@ select {
   padding: 10px;
   font-size: 16px;
   margin-top: 20px;
+}
+
+.custom-select-container {
+  position: relative;
+  width: 300px !important
+}
+
+.custom-select-box {
+  background-color: #000000; /* Vert foncé */
+  color: white;
+  padding: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bolder;
+  text-align: center;
+  border: 3px solid #5F886F;
+}
+
+.custom-select-box:hover {
+  background-color: #1F3A2E;
+  border: 3px solid #938B60;
+}
+
+.custom-select-options {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: #1F3A2E !important; /* Vert foncé */
+  z-index: 10;
+  border-radius: 4px;
+}
+
+.custom-select-options div {
+  padding: 10px;
+  background-color: #1f3a2e96; /* Vert foncé */
+  color: white;
+  cursor: pointer;
+}
+
+.custom-select-options div:hover {
+  background-color: #D3D3D3; 
+  color: #006400 !important; 
 }
 
 
@@ -421,7 +483,6 @@ select {
   display: flex;
   justify-content: center;
   align-items: center;
-  /* margin-top: 20px; */
 }
 
 /* Image du bouton */
@@ -443,6 +504,43 @@ select {
 .restart-button:hover {
   content: url('./assets/restart-hover.png'); /* Change l'image au survol */
 }
+
+/* Conteneur de l'image et du texte */
+.restart-wrapper {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+/* Image de redémarrage */
+.restart-button {
+  display: block;
+  width: 50px; /* Taille de l'image à ajuster selon vos besoins */
+  height: 50px; /* Taille de l'image à ajuster selon vos besoins */
+}
+
+/* Texte qui apparaît au survol */
+.restart-text {
+  position: absolute;
+  bottom: -30px; /* Positionner en dessous de l'image */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: black;  /* Fond noir */
+  color: white;             /* Texte blanc */
+  font-weight: bold;        /* Texte en gras */
+  padding: 5px 10px;
+  border-radius: 4px;
+  opacity: 0;               /* Texte invisible par défaut */
+  visibility: hidden;       /* Texte caché */
+  transition: opacity 0.3s ease, visibility 0.3s ease; /* Transition fluide */
+}
+
+/* Lorsque l'utilisateur survole l'image, le texte devient visible */
+.restart-wrapper:hover .restart-text {
+  opacity: 1;
+  visibility: visible;
+}
+
 
 .step-one {
   position: relative; 
@@ -577,31 +675,7 @@ select {
   overflow: hidden; /* Masque tout ce qui déborde */
   width: 100%;
 }
-/* .category-cards {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
-  flex-wrap: nowrap;
-  width: 100%;
-  max-width: 100%;
-  padding-bottom: 10px;
-  scrollbar-width: thin;
-  scrollbar-color: white transparent;
-  min-height: 350px;
-}
-.category-cards {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 20px;
-  flex-wrap: nowrap;
-  overflow-x: auto;
-  scroll-behavior: smooth;
-  padding-bottom: 10px;
-  padding-left: 50px;
-  padding-right: 50px;
-} */
+
 .category-cards {
   display: flex;
   justify-content: flex-start; /* Permet d'afficher les cartes à partir du début */
@@ -650,9 +724,9 @@ select {
   transition: all 0.3s ease;
   background-size: cover;
   background-position: center;
-  background-color: #02b15f3c; /* Fallback background color */
+  background-color: #103d395f;
   cursor: pointer;
-  border: 2px solid #f1f1f1; /* Crée une bordure brute et nette autour de la carte */
+  border: 3px solid #f1f1f1; /* Crée une bordure brute et nette autour de la carte */
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -737,6 +811,7 @@ select {
   letter-spacing: 1px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  margin: 0;
 }
 
 .boutons:hover {
@@ -775,7 +850,7 @@ select {
   color: #fff; /* Texte blanc */
   font-size: 16px;
   font-weight: bold;
-  border: 3px solid #0da629; /* Bordure verte brute */
+  border: 3px solid #5F886F; /* Bordure verte brute */
   padding: 10px 15px;
   border-radius: 5px;
   cursor: pointer;
@@ -813,3 +888,15 @@ select {
   color: #1a1a1a !important;
 }
 
+
+
+.excuse-generee p {
+  background-color: #ffffff8c;
+  padding: 20px;
+  color: #376142;
+  font-weight: bolder;
+  border-radius: 15px;
+  margin-bottom: 42px;
+  width: 420px;
+  margin-top: 10px;
+}
