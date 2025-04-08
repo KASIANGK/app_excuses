@@ -1,5 +1,4 @@
 import { useState, useEffect, useRef } from 'react';
-import VideoSection from './Components/VideoSection';
 import { motion } from 'framer-motion';
 import './App.css';
 import categoryData from './data/excusesData.json';
